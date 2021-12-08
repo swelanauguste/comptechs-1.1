@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+Add temperature -
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="my-5">New temperature</h2>
+    <form class="col-lg-4" action=""
+        method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="my-3 text-end">
+        <button type="submit"
+            class="btn btn-outline-dark">Submit</button>
+        </div>
+</div>
+{% endblock content %}

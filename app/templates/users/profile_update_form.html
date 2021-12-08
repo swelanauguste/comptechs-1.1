@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+{{ object }} -
+{% endblock head_title %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>{{ object }}</h1>
+    <p>{{object.user.profile.organization|title}}</p>
+    <hr>
+    <form class="col-lg-4"
+        action=""
+        method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="text-end my-3">
+            <button class="btn btn-outline-dark"
+                type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

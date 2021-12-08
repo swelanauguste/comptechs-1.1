@@ -46,8 +46,8 @@ class Temperature(TimeStampMixin):
     def get_address(self):
         return f"{self.address}, {self.district.name}"
 
-    # def get_absolute_url(self):
-    #     return reverse("temperatures:temperature-detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("temperatures:temperature-detail", kwargs={"pk": self.pk})
 
     class Meta:
         ordering = ("-temp",)

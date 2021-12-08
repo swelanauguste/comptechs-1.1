@@ -9,6 +9,7 @@ class User(AbstractUser):
     is_data_entry_clerk = models.BooleanField(default=True)
     is_developer = models.BooleanField(default=False)
     is_ministry_of_health = models.BooleanField(default=False)
+    is_manager = models.BooleanField(default=False)
     # pass
 
 
@@ -35,8 +36,8 @@ class Profile(models.Model):
             self.slug = slugify(self.user.username)
         super(Profile, self).save(*args, **kwargs)
 
-    # def get_absolute_url(self):
-    #     return reverse("users:profile-detail", kwargs={"slug": self.slug})
+    def get_absolute_url(self):
+        return reverse("users:user-profile-update", kwargs={"slug": self.slug})
 
     def __str__(self):
         if self.first_name and self.last_name:

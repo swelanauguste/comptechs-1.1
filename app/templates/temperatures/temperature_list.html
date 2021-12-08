@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="container my-5 text-end">
+        <a class="text-dark" href="{% url 'temperatures:temperature-create' %}">Add temperature</a>
+    <hr>
+
+    </div>
+
+    {% for object in object_list %}
+    <a class="text-decoration-none"
+        href="{{object.get_absolute_url}}">
+        <div style="max-width: 7rem;"
+            class="alert alert-{{object.get_temp_alert}} text-center m-2 p-0"
+            role="alert">
+            {{ object.temp }}
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock content %}

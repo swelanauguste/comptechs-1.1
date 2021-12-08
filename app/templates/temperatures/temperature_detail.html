@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head_title %}
+{{ object.nic_no }} - 
+{% endblock head_title %}
+
+{% block content %}
+<div class="container pt-5 my-5">
+    <div class="card text-light shadow mx-auto bg-{{object.get_temp_alert}}"
+        style="max-width: 28rem;">
+        <div title="body temperature"
+            class="card-header text-center fs-1">{{object.temp}}</div>
+        <div class="card-body p-4">
+            <p title="name">{{object.name|title}}</p>
+            <p title="phone">
+                <a class="text-light"
+                    href="tel:{{object.phone}}">
+                    {{object.phone}}
+                </a>
+            </p>
+            <p title="email">
+                <a class="text-light" href="mailto:{{object.email}}">
+                    {{object.email|default:"no email"}}
+                </a>
+            </p>
+            <p title="address">{{object.get_address|title}}</p>
+            <p title="NIC">{{object.nic_no}}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
